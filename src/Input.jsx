@@ -53,6 +53,8 @@ const Input = () => {
   return (
     <>
         <div className='input'>
+            <h1>Test YourSelf</h1>
+            <p>Let us help you automating test creation with just few clicks</p>
             <h1>Enter paper header details</h1>
             
             <label htmlFor='instituteName'>Institute Name</label>
