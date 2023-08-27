@@ -1,8 +1,5 @@
 import React, {useState} from 'react';
-// import './input.css';
-import Paper from './QuestionSection';
-import QuestionSection from './QuestionSection';
-import InputPaperHeaderDetails from './components/InputPaperHeaderDetails';
+
 
 const Input = () => {
 

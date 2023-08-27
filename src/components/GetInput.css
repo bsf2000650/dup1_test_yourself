@@ -1,0 +1,71 @@
+.getInput {
+    /* border: 2px solid black; */
+    margin: 30px;
+}
+.institute-div{
+    text-align: center;
+}
+.institute-div input[type='text'].institute-name {
+    width: 40%;
+    text-align: center;
+}
+.show-border{
+    height: 36px;
+    font-size: 26px;
+}
+.remove-border{
+    height: 36px;
+    font-size: 26px;
+    border: none; 
+}
+
+.outer-div .inner-div input[type="text"],
+.outer-div .inner-div input[type="number"],
+.outer-div .inner-div2 input[type="text"],
+.outer-div .inner-div2 input[type="number"]{
+    font-size: 16px;
+    height: 26px;
+    margin-bottom: 5px;
+    width: 29%;
+}
+.outer-div .inner-div input[type="text"].subject{
+    width: 70%;
+}
+/* .remove-session-border {
+    font-size: 16px;
+    height: 26px;
+    margin-bottom: 5px;
+    width: 29%;
+    border: none;
+} */
+.outer-div{
+    display: flex;
+    flex-direction: row;
+    align-items: flex-end;
+}
+.inner-div, .inner-div2 {
+    width: 63%;
+}
+.inner-div2 {
+    margin-right: -233px;
+}
+.inner-div .item, .inner-div2 .item{
+    display: flex;
+    flex-direction: row;
+    row-gap : 10px;
+}
+.inner-div2 .item input[type='text'],
+.inner-div2 .item input[type='number']{
+    width: 30%;
+}
+.inner-div2 .item label{
+    font-weight: bold;
+    width: 21%;
+    font-size: 16px;
+}
+
+.inner-div .item label{
+    width: 22%;
+    font-weight: bold;
+    font-size: 16px;
+}

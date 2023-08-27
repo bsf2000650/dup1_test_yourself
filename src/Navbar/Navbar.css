@@ -1,0 +1,34 @@
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: #bcd64c;
+    padding: 10px 20px;
+  }
+  
+  .logo img {
+    width: 48%;
+    height: auto;
+  }
+  
+  .nav-menu {
+    list-style: none;
+    display: flex;
+    gap: 20px;
+  }
+  
+  .nav-menu li {
+    margin: 0;
+  }
+  
+  .nav-menu a {
+    text-decoration: none;
+    color: white;
+    font-size: 16px;
+    transition: color 0.3s ease;
+  }
+  
+  .nav-menu a:hover {
+    color: #ffcc00;
+  }
+  

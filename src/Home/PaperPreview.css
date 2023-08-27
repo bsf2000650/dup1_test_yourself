@@ -1,0 +1,10 @@
+.paperPreview{
+    width: 57%;
+    margin-left: 200px;
+    border: 1px solid black;
+}
+.paperPreview img {
+    margin-left: 140px;
+    width: 75%;
+    border: 2px solid black;
+}

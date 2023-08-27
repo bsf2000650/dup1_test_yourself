@@ -1,17 +1,19 @@
 import React from 'react';
-import mcqs from './mcqs'; // Your array of MCQs
+import mcqs from './mcqs'; 
+import './SelectedMCQs.css'
 
 const SelectedMCQs = ({ selectedIndices }) => {
+  const sortedSelectedIndices = [...selectedIndices].sort((a, b) => a - b);
+
   return (
     <div>
-      <h1>Selected MCQs for Printing</h1>
-      {selectedIndices.map((index) => (
+      <h4>Choose the best answer</h4>
+      {sortedSelectedIndices.map((index, serialNumber) => (
         <div key={index} style={{ marginBottom: '20px' }}>
-          <h2>Question {index + 1}</h2>
-          <p>{mcqs[index].question}</p>
-          <ul>
+          <p>{serialNumber + 1}. {mcqs[index].question}</p>
+          <ul className='mcqs-section'>
             {mcqs[index].options.map((option, optionIndex) => (
-              <li key={optionIndex}>{option}</li>
+              <li className='options' key={optionIndex}>{option}</li>
             ))}
           </ul>
         </div>
@@ -21,3 +23,4 @@ const SelectedMCQs = ({ selectedIndices }) => {
 };
 
 export default SelectedMCQs;
+

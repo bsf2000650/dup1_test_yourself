@@ -2,9 +2,9 @@ h2{
     text-align: center;
     margin: 5px;
 }
-.mcqs{
+/* .mcqs{
     border: 2px solid black;
-}
+} */
 .paper-header-detail{
     display: flex;
     align-items: flex-start;

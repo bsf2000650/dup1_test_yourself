@@ -1,133 +1,165 @@
-import React, {useState} from 'react';
+import React, { useState } from "react";
+import "./GetInput.css";
 
 const GetInput = () => {
+  const [instituteName, setInstituteName] = useState("");
+  const [session, setSession] = useState("");
+  const [paper, setPaper] = useState("");
+  const [paperCode, setPaperCode] = useState("");
+  const [paperType, setPaperType] = useState("");
+  const [time, setTime] = useState("");
+  const [maxMarks, setMaxMarks] = useState();
 
-    const [instituteName,setInstituteName] = useState('');
-    const [session,setSession] = useState('');
-    const [paper,setPaper] = useState('');
-    const [paperCode,setPaperCode] = useState('');
-    const [paperType, setPaperType] = useState('');
-    const [time,setTime] = useState('');
-    const [maxMarks, setMaxMarks] = useState();
+  const [flag, setFlag] = useState(true);
+  const [flag1, setFlag1] = useState(true);
 
-    const [showInput,setShowInput] = useState(true)
 
-    const handleInstChange = (e) => {
-        e.preventDefault();
-        setInstituteName(e.target.value)
-    }
+  const handleInstChange = (e) => {
+    e.preventDefault();
+    setInstituteName(e.target.value);
+  };
 
-    const handleSessChange = (e) => {
-        e.preventDefault();
-        setSession(e.target.value);
-    }
+  const handleSessChange = (e) => {
+    e.preventDefault();
+    setSession(e.target.value);
+  };
 
-    const handlePaperChange = (e) => {
-        e.preventDefault();
-        setPaper(e.target.value);
-    }
+  const handlePaperChange = (e) => {
+    e.preventDefault();
+    setPaper(e.target.value);
+  };
 
-    const handlePapCodeChange = (e) => {
-        e.preventDefault();
-        setPaperCode(e.target.value);
-    }
+  const handlePapCodeChange = (e) => {
+    e.preventDefault();
+    setPaperCode(e.target.value);
+  };
 
-    const handleTimeChange = (e) => {
-        e.preventDefault();
-        setTime(e.target.value);
-    }
+  const handleTimeChange = (e) => {
+    e.preventDefault();
+    setTime(e.target.value);
+  };
 
-    const handleMaxMarksChange = (e) => {
-        e.preventDefault();
-        setMaxMarks(e.target.value);
-    }
+  const handleMaxMarksChange = (e) => {
+    e.preventDefault();
+    setMaxMarks(e.target.value);
+  };
 
-    const handlePapTypeChange = (e) => {
-        e.preventDefault();
-        setPaperType(e.target.value);
-    }
+  const handlePapTypeChange = (e) => {
+    e.preventDefault();
+    setPaperType(e.target.value);
+  };
 
-    const toggleSections = () => {
-        setShowInput(!showInput);
-    }
-    
+  const handleRemoveBorder = () => {
+    setFlag(!flag);
+  };
+
+  const handleSessionBorder = () => {
+    setFlag1(!flag1);
+  }
 
   return (
     <>
-    { showInput ? (
-        <>
-        <div className='getInput'>
-            <h1>Enter paper header details</h1>
+      <>
+        <div className="getInput">
+          {/* Institute Name */}
+          <div className="institute-div">
+            <input
+              type="text"
+              id="instituteName"
+              placeholder="Institute Name"
+              value={instituteName}
+              onChange={handleInstChange}
+              className={flag ? "remove-border institute-name" : "show-border institute-ame"}
+            />
+          </div>
+
+          <br />
+
+          <div className="outer-div">
+
+            <div className="inner-div">   
+            <div className="item">
+           
+            <label htmlFor="paper">Subject : </label>
+            <input
+              type="text"
+              id="paper"
+              placeholder="Computer Science/Biology"
+              value={paper}
+              onChange={handlePaperChange}
+              className={flag ? "remove-border subject" : "show-border subject"}
+            />
+            </div>
+
+            <div className="item">
+            <label htmlFor="session">Session : </label>
+            <input
+              type="text"
+              id="session"
+              placeholder="2020-2024"
+              value={session}
+              onChange={handleSessChange}
+              className={flag ? "remove-border" : "show-border"}
+            />
+            </div>
+
+            <div className="item">
+            <label htmlFor="paperCode">Paper Code : </label>
+            <input
+              type="text"
+              id="paperCode"
+              placeholder="CS2023"
+              value={paperCode}
+              onChange={handlePapCodeChange}
+              className={flag ? "remove-border" : "show-border"}
+            />
+            </div>
+            </div>
             
-            <label htmlFor='instituteName'>Institute Name</label>
-            <input 
-                type="text"
-                id='instituteName'
-                value={instituteName}
-                onChange={handleInstChange}
-             /> <br />
-             <label htmlFor="session">Session</label>
-             <input 
-                type="text"
-                id='session'
-                value={session}
-                onChange={handleSessChange} /> <br />
-             <label htmlFor="paper">Paper Title</label>
-             <input 
-                type="text"
-                id='paper'
-                value={paper}
-                onChange={handlePaperChange} /> <br />
-             <label htmlFor="paperCode">Paper Code</label>
-             <input 
-                type="text"
-                id='paperCode'
-                value={paperCode}
-                onChange={handlePapCodeChange} /> <br />
-             <label htmlFor="time">Time</label>
-             <input 
-                type="text"
-                id='time'
-                value={time}
-                onChange={handleTimeChange} /> <br />
-
-             <label htmlFor="paperType">Paper Type</label>
-             <input 
-                type="text"
-                id='paperType'
-                value={paperType}
-                onChange={handlePapTypeChange} /> <br />
-
-             <label htmlFor="maxMarks">Max Marks</label>
-             <input 
-                type="number"
-                id='maxMarks'
-                value={maxMarks}
-                onChange={handleMaxMarksChange} /> <br />
-        </div> 
-        <button onClick={toggleSections}>Show Input</button>
-        </>) : (
-        <div className='setInput'>
-            <h2>{instituteName}</h2>
-            <h2>{session}</h2>
-            <h2>{paper}</h2>
-            <h2>{paperCode}</h2>
-            <h2>{time}</h2>
-            <h2>{paperType}</h2>
-            <h2>{maxMarks}</h2>
-        </div> )
-    }
-        {/* <SetInput 
-            instituteName={instituteName}
-            session={session}
-            paper={paper}
-            paperCode={paperCode}
-            paperType={paperType}
-            time={time}
-            maxMarks={maxMarks}
-         /> */}
+            <div className="inner-div2">
+            <div className="item">
+            <label htmlFor="time">Time : </label>
+            <input
+              type="text"
+              id="time"
+              placeholder="20 Mins"
+              value={time}
+              onChange={handleTimeChange}
+              className={flag ? "remove-border" : "show-border"}
+            />
+            </div>
+            
+            <div className="item">
+            <label htmlFor="paperType">Paper Type : </label>
+            <input
+              type="text"
+              id="paperType"
+              placeholder="Objective/Subjective"
+              value={paperType}
+              onChange={handlePapTypeChange}
+              className={flag ? "remove-border" : "show-border"}
+            />
+            </div>
+            
+            <div className="item">
+            <label htmlFor="maxMarks">Max Marks : </label>
+            <input
+              type="number"
+              id="maxMarks"
+              value={maxMarks}
+              placeholder="20"
+              onChange={handleMaxMarksChange}
+              className={flag ? "remove-border" : "show-border"}
+            />
+            </div>
+            
+            </div>
+          </div>
+          {/* <button onClick={handleRemoveBorder}>{flag ? 'Show Border' : 'Remove Border'}</button> */}
+        </div>
+      </>
     </>
-  )
-}
+  );
+};
 
 export default GetInput;

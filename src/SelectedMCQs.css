@@ -1,0 +1,18 @@
+.mcqs-section {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr); /* Adjust the number of columns as needed */
+    gap: 10px; /* Adjust the gap between grid items */
+    list-style: none;
+    padding: 0;
+  }
+  
+  .options {
+    /* border: 1px solid #ccc; */
+    /* padding: 10px; */
+    text-align: left;
+  }
+
+  h4{
+    font-size: 20px;
+    margin: 10px 0px;
+  }

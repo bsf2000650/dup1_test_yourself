@@ -1,8 +1,61 @@
+.mcqs-paper{
+  margin-left: 25px;
+  margin-bottom: 50px;
+}
 li{
     list-style-type: none;
     margin-left: 30px;
 }
 
+.mcqs-options {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  grid-gap: 10px;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.mcqs-options li {
+  padding: 5px;
+}
+
 .mcq-generate-btn{
-    margin-bottom: 50px;
+    margin: 29px 27px;
+  padding: 12px 24px;
+  font-size: 16px;
+  font-weight: bold;
+  text-transform: uppercase;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  background-color: #3498db;
+  color: white;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.mcq-generate-btn:hover {
+  background-color: #2980b9;
+  transform: scale(1.05);
+}
+.hide-print-btn{
+  display: none;
+}
+.choose-best-answer{
+    text-align: left;
+}
+.display{
+  display: block;
+}
+.hide{
+  display: none;
+}
+.hide-print-btn{
+  display: none;
+}
+@media print {
+  .hide-print-btn {
+    display: none !important;
+  }
 }
