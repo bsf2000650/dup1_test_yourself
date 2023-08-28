@@ -15,16 +15,21 @@
     list-style: none;
     display: flex;
     gap: 20px;
+    margin-right: 43px;
   }
   
   .nav-menu li {
     margin: 0;
+    margin-right: 30px;
+    background-color: #b39931;
+    padding: 5px;
+    border-radius: 8px;
   }
   
   .nav-menu a {
     text-decoration: none;
-    color: white;
-    font-size: 16px;
+    color: rgb(255, 255, 255);
+    font-size: 24px;
     transition: color 0.3s ease;
   }
   

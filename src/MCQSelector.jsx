@@ -2,6 +2,15 @@ import React, { useState } from 'react';
 import './MCQSelector.css'; // You can import your own CSS styles
 import mcqs from './mcqs'; // Your array of MCQs
 import InputPaperHeaderDetails from './components/InputPaperHeaderDetails'
+import MCQsPDFFile from './components/MCQsPDFFile';
+import {PDFDownloadLink, StyleSheet} from '@react-pdf/renderer'
+
+const styles = StyleSheet.create({
+  pdfLink : {
+    textDecoration : 'none',
+    width : '10%'
+  }
+})
 
 const MCQSelector = () => {
   const [selectedMCQs, setSelectedMCQs] = useState([]);
@@ -36,11 +45,18 @@ const MCQSelector = () => {
   const handlePrint = () => {
     const printButton = document.getElementById('printButton');
     const doneBtn = document.getElementById('doneBtn');
+    // const sqDoneBtn = document.getElementById('sqDoneBtn');
+    const saveAsPdfBtn = document.getElementById('saveAsPdfBtn');
+    
     printButton.style.display = 'none'; // Hide the print button before printing
     doneBtn.style.display = 'none'; // Hide the print button before printing
+    // sqDoneBtn.style.display = 'none';
+    saveAsPdfBtn.style.display = 'none';
     window.print();
     printButton.style.display = 'block'; // Show the print button after printing
     doneBtn.style.display = 'block'; // Show the print button after printing
+    // sqDoneBtn.style.display = 'block';
+    saveAsPdfBtn.style.display = 'block';
   };
 
   return (
@@ -96,6 +112,15 @@ const MCQSelector = () => {
           ))}
         </ol>
       </div>
+      <PDFDownloadLink
+      style={styles.pdfLink}
+       document={<MCQsPDFFile 
+                      selectedMCQs={selectedMCQs} 
+                      />} 
+                      
+                      fileName="Paper 1">
+       {({loading})=>(loading ? <button>Preparing for Download...</button> : <button id='saveAsPdfBtn' className="pdf-generate-btn">Save As PDF</button>)}
+    </PDFDownloadLink>
     <button id="printButton" className="mcq-generate-btn" onClick={handlePrint}>
   Print
 </button>

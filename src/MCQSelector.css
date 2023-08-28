@@ -7,7 +7,7 @@ li{
     margin-left: 30px;
 }
 
-.mcqs-options {
+.mcqs-options,.pdf-mcqs {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
   grid-gap: 10px;
@@ -16,11 +16,11 @@ li{
   margin: 0;
 }
 
-.mcqs-options li {
+.mcqs-options li, .pdf-mcqs li{
   padding: 5px;
 }
 
-.mcq-generate-btn{
+.mcq-generate-btn , .pdf-generate-btn{
     margin: 29px 27px;
   padding: 12px 24px;
   font-size: 16px;
@@ -33,12 +33,22 @@ li{
   color: white;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   transition: background-color 0.3s ease, transform 0.2s ease;
+  margin-bottom: 50px;
 }
 
-.mcq-generate-btn:hover {
+.mcq-generate-btn:hover,
+.pdf-generate-btn:hover {
   background-color: #2980b9;
   transform: scale(1.05);
 }
+
+
+.pdf-div{
+  width: 10%;
+  text-decoration: none;
+  border: 2px solid black;
+}
+
 .hide-print-btn{
   display: none;
 }

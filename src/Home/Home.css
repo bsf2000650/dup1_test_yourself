@@ -1,5 +1,5 @@
 .home-container {
-    max-width: 1200px;
+    max-width: 1300px;
     margin: 0 auto;
     padding: 20px; 
   }
@@ -12,11 +12,12 @@
   .header h1 {
     font-size: 36px;
     margin-bottom: 10px;
+    color: rgb(46, 113, 74);
   }
   
   .header p {
     font-size: 18px;
-    color: #888;
+    color: rgb(46, 113, 74);
   }
   
   .main-content {
@@ -27,11 +28,17 @@
   .main-content h2 {
     font-size: 28px;
     margin-bottom: 10px;
+    color: rgb(46, 113, 74);
+  }
+
+  .choose-feature {
+    color: rgb(46, 113, 74);
   }
   
   .main-content p {
     font-size: 18px;
     margin-bottom: 20px;
+    color: rgb(46, 113, 74);
   }
   
   .main-content button {
@@ -47,26 +54,51 @@
   .additional-content {
     display: flex;
     justify-content: space-between;
-    flex-direction: column;
+    flex-direction: row;
+    transition: transform 0.5s linear, box-shadow 0.3s ease-in-out;
   }
   
   .feature {
-    flex: 1;
+    flex: 1 1;
     background-color: white;
     border: 1px solid #ccc;
     padding: 20px;
     border-radius: 5px;
     text-align: center;
-    margin: 15px 0px;
-  }
+    margin: 15px 10px;
+    width: 40%;
+    height: 30vh;
+    transition: transform 0.5s ease-in-out, background-color 0.3s ease-in-out;
+    text-decoration: none;
+    color: black;
+}
+
+.feature:hover {
+    transform: scale(1.1); /* Adjust the scale value as needed */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    background-color: lightgray; /* Change the background color on hover */
+}
+
   
   .feature h3 {
     font-size: 24px;
     margin-bottom: 10px;
+    text-decoration: none;
   }
   
   .feature p {
     font-size: 16px;
     color: #444;
+    text-decoration: none;
+  }
+
+
+  @media screen and (max-width: 381px) {
+    .additional-content {
+      flex-direction: column;
+    }
+    .feature {
+      width: 96%;
+  }
   }
   

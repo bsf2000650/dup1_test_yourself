@@ -6,6 +6,7 @@ import CompletePaperPreview from './Home/CompletePaperPreview';
 import CompletePaper from './components/CompletePaper';
 import MCQSelector from './MCQSelector';
 import ShortQuestionSelector from './ShortQuestionSelector';
+import MCQsSQsLongPaper from './components/MCQsSQsLongPaper';
 
 
 function App() {
@@ -20,9 +21,10 @@ function App() {
         <Route exact path='/mcqsPaper' element={<MCQSelector />} />
         <Route exact path='/sqsPaper' element={<ShortQuestionSelector />} />
         <Route exact path='/mcqsAndsqsPaper' element={<CompletePaper />} />
-        <Route exact path='/completePaper' element={<CompletePaperPreview />} />
+        <Route exact path='/completePaper' element={<MCQsSQsLongPaper />} />
       </Routes>
     </Router>
+    
     {/* <CompletePaper /> */}
     </>
   )

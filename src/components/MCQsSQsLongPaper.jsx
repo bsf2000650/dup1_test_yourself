@@ -1,10 +1,13 @@
 import React, { useState } from "react";
 import mcqs from "../mcqs";
 import shortQuestions from "../shortQuestions";
+import longQuestions from '../longQuestions';
 import InputPaperHeaderDetails from "./InputPaperHeaderDetails";
-import {PDFDownloadLink, StyleSheet} from '@react-pdf/renderer'
-import MCQsSQsPaperPDFFile from '../components/MCQsSQsPaperPDFFile'
 import "./CompletePaper.css";
+import jsPDF from 'jspdf';
+import MCQsPDFFile from "./MCQsPDFFile";
+import {PDFDownloadLink, StyleSheet} from '@react-pdf/renderer'
+import CompletePaperPDFFile from "./CompletePaperPDFFile";
 
 const styles = StyleSheet.create({
   pdfLink : {
@@ -13,10 +16,11 @@ const styles = StyleSheet.create({
   }
 })
 
+
+
 const CompletePaper = (props) => {
   const [selectedMCQs, setSelectedMCQs] = useState([]);
-  const [showShortQuestionSection, setShowShortQuestionSection] =
-    useState(true);
+  const [showShortQuestionSection, setShowShortQuestionSection] = useState(true);
   const [showMCQSection, setShowMCQSection] = useState(true);
   const [doneButton, setDoneButton] = useState(true);
   const [printBtn, setPrintBtn] = useState(true);
@@ -43,6 +47,7 @@ const CompletePaper = (props) => {
   };
 
   const [selectedShortQuestions, setSelectedShortQuestions] = useState([]);
+  const [selectedLongQuestions, setSelectedLongQuestions] = useState([]);
   // const [showShortQuestionSection, setShowShortQuestionSection] = useState(true);
   // const [doneButton, setDoneButton] = useState(true);
 
@@ -52,11 +57,28 @@ const CompletePaper = (props) => {
     }
   };
 
+
+  const handleLongQuestionSelection = (index) => {
+    if (!selectedLongQuestions.includes(index)) {
+      setSelectedLongQuestions([...selectedLongQuestions, index]);
+    }
+  };
+
+
+
   const handleShortQuestionDeselection = (index) => {
     const updatedSelectedShortQuestions = selectedShortQuestions.filter(
       (selectedIndex) => selectedIndex !== index
     );
     setSelectedShortQuestions(updatedSelectedShortQuestions);
+  };
+
+
+  const handleLongQuestionDeselection = (index) => {
+    const updatedSelectedLongQuestions = selectedLongQuestions.filter(
+      (selectedIndex) => selectedIndex !== index
+    );
+    setSelectedLongQuestions(updatedSelectedLongQuestions);
   };
 
   // const toggleMCQSection = () => {
@@ -69,7 +91,7 @@ const CompletePaper = (props) => {
 
   const handlePrint = () => {
     const printButton = document.getElementById('printButton');
-    // const doneBtn = document.getElementById('doneBtn');
+    const doneBtn = document.getElementById('doneBtn');
     const sqDoneBtn = document.getElementById('sqDoneBtn');
     const saveAsPdfBtn = document.getElementById('saveAsPdfBtn');
     
@@ -83,6 +105,8 @@ const CompletePaper = (props) => {
     sqDoneBtn.style.display = 'block';
     saveAsPdfBtn.style.display = 'block';
   };
+
+  
 
   return (
     <>
@@ -188,23 +212,79 @@ const CompletePaper = (props) => {
         </ol>
         
       </div>
+      {/* <button id='sqDoneBtn' className='mcq-generate-btn' onClick={toggleMCQSection}>
+            {showShortQuestionSection ? 'Done' : 'Modify'}
+      </button> */}
+          {/* Short Questions Ends Here */}
+
+            {/* Long Questions Starts Here */}
+
+          <div className={doneButton ? 'display' : 'hide'}>
+      {showShortQuestionSection && (
+        <div>
+          <h2 className='short-questions'>Select Long Questions from the Following:</h2>
+          <ul>
+            {longQuestions.map((question, index) => (
+              <li key={index}>
+                <label>
+                  <input
+                    type="checkbox"
+                    checked={selectedLongQuestions.includes(index)}
+                    onChange={() =>
+                      selectedLongQuestions.includes(index)
+                        ? handleLongQuestionDeselection(index)
+                        : handleLongQuestionSelection(index)
+                    }
+                  />
+                  {question}
+                </label>
+              </li>
+            ))}
+          </ul>
+        </div>
+      )}
+      {/* {doneButton && (
+        <button className='mcq-generate-btn' onClick={handleDoneClick}>
+          {doneButton ? 'Done' : 'Modify'}
+        </button>
+      )} */}
+      </div>
+      <div className='selected-short-questions'>
+        <h3>Long Questions :</h3>
+        <ol>
+          {selectedLongQuestions.map((index, serialNumber) => (
+            <li key={index}>
+              {`${serialNumber + 1}. ${longQuestions[index]}`}
+            </li>
+          ))}
+        </ol>
+        
+      </div>
       <button id='sqDoneBtn' className='mcq-generate-btn' onClick={toggleMCQSection}>
             {showShortQuestionSection ? 'Done' : 'Modify'}
       </button>
-      <PDFDownloadLink
+      <PDFDownloadLink 
       style={styles.pdfLink}
-       document={<MCQsSQsPaperPDFFile 
-                      selectedShortQuestions={selectedShortQuestions} 
+      document={<CompletePaperPDFFile 
                       selectedMCQs={selectedMCQs} 
+                      selectedShortQuestions={selectedShortQuestions}
+                      selectedLongQuestions={selectedLongQuestions}
                       />} 
                       
                       fileName="Paper 1">
-       {({loading})=>(loading ? <button >Preparing for Download...</button> : <button id='saveAsPdfBtn' className="mcq-generate-btn">Save As PDF</button>)}
+       {({loading})=>(loading ? <button>Preparing for Download...</button> : <button id="saveAsPdfBtn" className="mcq-generate-btn">Save As PDF</button>)}
     </PDFDownloadLink>
-          {/* Short Questions Ends Here */}
+          {/* Long Questions Ends Here */}
           <button id="printButton" className="mcq-generate-btn" onClick={handlePrint}>
        Print
       </button>
+      
+      {/* <button className="mcq-generate-btn" onClick={handleSaveAsPDF}>
+         Save as PDF
+      </button> */}
+      <br />
+      
+    {/* <PDFFile  selectedMCQs={selectedMCQs} /> */}
       </div>
     </>
   );

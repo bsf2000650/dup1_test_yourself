@@ -12,12 +12,11 @@ const HomePage = () => {
       <section className="main-content">
         <h2>Explore Our Features</h2>
         <p>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla
-          consectetur libero ac metus bibendum, ac finibus felis eleifend.
+          Create test just within few clicks.
         </p>
         <button>Learn More</button>
       </section>
-      <h1>Choose Any of the Template</h1>
+      <h1 className='choose-feature'>Choose Any of the Template</h1>
       <div className="additional-content">
         <Link to='/mcqsPaper' className="feature">
           <h3>MCQS</h3>

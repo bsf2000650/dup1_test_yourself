@@ -1,7 +1,17 @@
 import React, { useState } from 'react';
 import './ShortQuestionSelector.css'; // Import your CSS styles
 import shortQuestions from './shortQuestions'; // Your array of short questions
+import SQsPDFFile from './components/SQsPDFFile'
 import InputPaperHeaderDetails from './components/InputPaperHeaderDetails';
+import {PDFDownloadLink, StyleSheet} from '@react-pdf/renderer'
+
+const styles = StyleSheet.create({
+  pdfLink : {
+    textDecoration : 'none',
+    width : '10%'
+  }
+})
+
 
 const ShortQuestionSelector = () => {
   const [selectedShortQuestions, setSelectedShortQuestions] = useState([]);
@@ -32,11 +42,18 @@ const ShortQuestionSelector = () => {
   const handlePrint = () => {
     const printButton = document.getElementById('printButton');
     const doneBtn = document.getElementById('doneBtn');
+    // const sqDoneBtn = document.getElementById('sqDoneBtn');
+    const saveAsPdfBtn = document.getElementById('saveAsPdfBtn');
+    
     printButton.style.display = 'none'; // Hide the print button before printing
     doneBtn.style.display = 'none'; // Hide the print button before printing
+    // sqDoneBtn.style.display = 'none';
+    saveAsPdfBtn.style.display = 'none';
     window.print();
     printButton.style.display = 'block'; // Show the print button after printing
     doneBtn.style.display = 'block'; // Show the print button after printing
+    // sqDoneBtn.style.display = 'block';
+    saveAsPdfBtn.style.display = 'block';
   };
 
 
@@ -87,6 +104,15 @@ const ShortQuestionSelector = () => {
           ))}
         </ol>
       </div>
+      <PDFDownloadLink
+      style={styles.pdfLink}
+       document={<SQsPDFFile 
+                      selectedShortQuestions={selectedShortQuestions} 
+                      />} 
+                      
+                      fileName="Paper 1">
+       {({loading})=>(loading ? <button >Preparing for Download...</button> : <button id='saveAsPdfBtn' className="pdf-generate-btn">Save As PDF</button>)}
+    </PDFDownloadLink>
       <button id="printButton" className="mcq-generate-btn" onClick={handlePrint}>
        Print
       </button>

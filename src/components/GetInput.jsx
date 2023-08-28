@@ -69,7 +69,7 @@ const GetInput = () => {
               placeholder="Institute Name"
               value={instituteName}
               onChange={handleInstChange}
-              className={flag ? "remove-border institute-name" : "show-border institute-ame"}
+              className={flag ? "remove-border institute-name" : "show-border institute-name"}
             />
           </div>
 
@@ -129,7 +129,7 @@ const GetInput = () => {
             />
             </div>
             
-            <div className="item">
+            <div className="item paper-type">
             <label htmlFor="paperType">Paper Type : </label>
             <input
               type="text"
